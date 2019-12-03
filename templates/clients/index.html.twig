@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des clients{% endblock %}
+
+{% block body %}
+<h1>Liste des Clients</h1>
+   <table class="table">
+   <thead>
+   <tr>
+
+    <th>Société</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>email</th>
+    <th>IBAN</th>
+
+   </tr>
+   </thead>
+<tbody>
+{% for client in clients %}
+
+    <tr>
+     <td>{{ client.societe }}</td>
+    <td>{{ client.nom }}</td>
+     <td>{{ client.prenom }}</td>
+    <td>{{ client.email }}</td>
+     <td>{{ client.IBAN }}</td>
+    
+ 
+   
+    </tr>
+    <td>
+    <a href="{{ path("modifier_client",{"id":client.id}) }}"
+    class="btn btn-primary">
+    Modifier</a>
+
+    </td>
+    <td>
+    <a href="{{ path("supprimer_client", {"id":client.id}) }}"
+             class="btn btn-primary">supprimer</a>
+             </td>
+{% endfor %}
+
+</tbody>
+</table>
+
+{% endblock %}
